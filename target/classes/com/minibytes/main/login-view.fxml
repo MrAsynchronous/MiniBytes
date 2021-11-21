@@ -30,7 +30,7 @@
                <Image url="@MiniBytesLogo.png" />
             </image>
          </ImageView>
-         <Button fx:id="loginButton" layoutX="275.0" layoutY="343.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="163.0" text="Signup" />
+         <Button fx:id="loginButton" layoutX="275.0" layoutY="343.0" mnemonicParsing="false" onMouseClicked="#onLoginButtonClick" prefHeight="31.0" prefWidth="163.0" text="Signup" />
       </children>
    </Pane>
 </VBox>

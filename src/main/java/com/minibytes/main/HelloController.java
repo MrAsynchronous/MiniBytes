@@ -36,27 +36,12 @@ public class HelloController {
     protected void onLoginButtonClick() {
         System.out.println("Hello World!");
 
-//        String username = usernameBox.getText();
-//        String password = Hashing.sha256()
-//                .hashString(passwordBox.getText(), StandardCharsets.UTF_8)
-//                .toString();
-//
-//        HashMap response = cloud.Login(username, password);
-//        String user_id = response.get("user_id").toString();
-//
-//        HashMap res = cloud.GetByteFeed();
-//
-//        ArrayList<HashMap> bytes = (ArrayList<HashMap>) res.get("bytes");
-//
-//        for (HashMap map : bytes) {
-//            String body = map.get("body").toString();
-//
-//            Label newlabel = new Label();
-//            newlabel.setText(body);
-//
-//            bytelist.getItems().add(newlabel);
-//        }
-//
-//        System.out.println(bytes.get(0));
+        String username = usernameBox.getText();
+        String password = Hashing.sha256()
+                .hashString(passwordBox.getText(), StandardCharsets.UTF_8)
+                .toString();
+
+        HashMap response = cloud.Login(username, password);
+        System.out.println(response);
     }
 }

@@ -24,7 +24,12 @@ public class CloudService extends Network {
             user_id: String
         }
      */
-    public HashMap Signup(String username, String password) {
+    public HashMap Signup(String username, String password, String bio) {
+
+        if (!IsOnline) {
+            return offlineCluster.Signup(username, password, bio);
+        }
+
         Map<String, String> elements = new HashMap();
         elements.put("name", username);
         elements.put("password", password);
@@ -50,6 +55,11 @@ public class CloudService extends Network {
         }
      */
     public HashMap Login(String username, String password) {
+
+        if (!IsOnline) {
+            return offlineCluster.Login(username, password);
+        }
+
         Map<String, String> elements = new HashMap();
         elements.put("name", username);
         elements.put("password", password);

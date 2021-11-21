@@ -9,9 +9,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Network {
-    public final String BASE_URL;
-    private final OkHttpClient CLIENT = new OkHttpClient();
     private static final ObjectMapper mapper = new ObjectMapper();
+    private final OkHttpClient CLIENT = new OkHttpClient();
+    public final String BASE_URL;
+    public boolean IsOnline;
+    public OfflineCluster offlineCluster;
 
     /*
         Constructs new CloudService.Network with the specified url
@@ -28,11 +30,14 @@ public class Network {
 
         // Validate that server is real
         try (Response response = CLIENT.newCall(request).execute()) {
+            this.IsOnline = true;
+
             System.out.println("Connected to MiniBytes Cloud!");
         } catch (Exception e) {
-            System.out.println("Couldn't connect to MiniBytes Cloud!");
+            this.IsOnline = false;
+            this.offlineCluster = new OfflineCluster();
 
-            System.exit(0);
+            System.out.println("Couldn't connect to MiniBytes Cloud!");
         }
     }
 
