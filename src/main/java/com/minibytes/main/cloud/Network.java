@@ -37,7 +37,7 @@ public class Network {
             this.IsOnline = false;
             this.offlineCluster = new OfflineCluster();
 
-            System.out.println("Couldn't connect to MiniBytes Cloud!");
+            System.out.println("Couldn't connect to MiniBytes Cloud! Using offline cluster instead.");
         }
     }
 

@@ -4,7 +4,6 @@ import com.google.common.hash.Hashing;
 import com.minibytes.main.cloud.CloudService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -34,8 +33,6 @@ public class HelloController {
 
     @FXML
     protected void onLoginButtonClick() {
-        System.out.println("Hello World!");
-
         String username = usernameBox.getText();
         String password = Hashing.sha256()
                 .hashString(passwordBox.getText(), StandardCharsets.UTF_8)
