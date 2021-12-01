@@ -7,6 +7,7 @@ import com.minibytes.main.controllers.SignupView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -38,6 +39,8 @@ public class MiniBytesApplication extends Application {
 
         // Set scene
         stage.setScene(landingView.getScene());
+
+        stage.getIcons().add(new Image("file:src/main/resources/Icon.png"));
 
         stage.setTitle("MiniBytes");
         stage.setResizable(false);

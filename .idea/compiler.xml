@@ -13,4 +13,9 @@
       <module name="MiniBytes" target="16" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="MiniBytes" options="--add-exports java.desktop/com.apple.eawt=com.minibytes.minibytes" />
+    </option>
+  </component>
 </project>
