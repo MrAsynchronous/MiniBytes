@@ -1,8 +1,6 @@
 package com.minibytes.main.controllers;
 
-import com.minibytes.main.MiniBytesApplication;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 

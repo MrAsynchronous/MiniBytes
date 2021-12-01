@@ -19,7 +19,7 @@
         <children>
             <TextField fx:id="usernameBox" layoutX="256.0" layoutY="151.0" prefHeight="31.0" prefWidth="202.0" promptText="Username" style="-fx-background-color: #58D68D#58D68D; -fx-text-fill: #34495E#34495E;" text="Username" />
             <PasswordField fx:id="passwordBox" layoutX="256.0" layoutY="193.0" prefHeight="31.0" prefWidth="202.0" promptText="Password" style="-fx-background-color: #58D68D#58D68D; -fx-text-fill: #34495E#34495E #34495E#34495E;" text="Password" />
-            <TextField fx:id="usernameBox1" alignment="TOP_LEFT" layoutX="256.0" layoutY="236.0" prefHeight="79.0" prefWidth="202.0" promptText="Write a bio" style="-fx-background-color: #58D68D#58D68D; -fx-text-fill: #34495E#34495E #34495E#34495E;" text="Write a bio" />
+            <TextField fx:id="bioBox" alignment="TOP_LEFT" layoutX="256.0" layoutY="236.0" prefHeight="79.0" prefWidth="202.0" promptText="Write a bio" style="-fx-background-color: #58D68D#58D68D; -fx-text-fill: #34495E#34495E #34495E#34495E;" text="Write a bio" />
             <Button fx:id="signupButton" layoutX="256.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#onSignupButtonClicked" prefHeight="39.0" prefWidth="202.0" style="-fx-background-color: #F4F6F7#F4F6F7; -fx-text-fill: #34495E#34495E #34495E#34495E #34495E#34495E #34495E#34495E;" text="Signup">
                 <font>
                     <Font size="20.0" />
