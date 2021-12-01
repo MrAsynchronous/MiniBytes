@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="MiniBytes" options="--add-exports java.desktop/com.apple.eawt=com.minibytes.minibytes" />
+      <module name="MiniBytes" options="" />
     </option>
   </component>
 </project>
