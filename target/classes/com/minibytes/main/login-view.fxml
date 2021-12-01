@@ -11,26 +11,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="500.0" maxWidth="750.0" minHeight="500.0" minWidth="750.0" prefHeight="500.0" prefWidth="500.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.minibytes.main.HelloController">
+<VBox alignment="CENTER" maxHeight="500.0" maxWidth="750.0" minHeight="500.0" minWidth="750.0" prefHeight="500.0" prefWidth="500.0" spacing="20.0" style="-fx-background-color: #82E0AA#82E0AA;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.minibytes.main.controllers.LoginView">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <Pane prefHeight="500.0" prefWidth="750.0">
+   <Pane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #82E0AA#82E0AA;">
       <children>
-         <TextField fx:id="usernameBox" layoutX="279.0" layoutY="149.0" promptText="Username" />
-         <PasswordField fx:id="passwordBox" layoutX="279.0" layoutY="201.0" promptText="Password" />
-         <Label layoutX="275.0" layoutY="99.0" prefHeight="31.0" prefWidth="159.0" text="Create Profile">
+         <TextField fx:id="usernameBox" layoutX="253.0" layoutY="203.0" prefHeight="31.0" prefWidth="202.0" promptText="Username" style="-fx-background-color: #58D68D#58D68D; -fx-text-fill: #34495E#34495E;" text="Username" />
+         <PasswordField fx:id="passwordBox" layoutX="253.0" layoutY="249.0" prefHeight="31.0" prefWidth="202.0" promptText="Password" style="-fx-background-color: #58D68D#58D68D; -fx-text-fill: #34495E#34495E #34495E#34495E;" text="Password" />
+         <Button fx:id="loginButton" layoutX="253.0" layoutY="294.0" mnemonicParsing="false" onMouseClicked="#onLoginButtonClicked" prefHeight="39.0" prefWidth="202.0" style="-fx-background-color: #F4F6F7#F4F6F7; -fx-text-fill: #34495E#34495E #34495E#34495E #34495E#34495E #34495E#34495E;" text="Login">
             <font>
-               <Font size="26.0" />
-            </font>
-         </Label>
-         <TextField fx:id="usernameBox1" layoutX="276.0" layoutY="256.0" prefHeight="62.0" prefWidth="159.0" promptText="Write a bio" />
-         <ImageView fitHeight="62.0" fitWidth="322.0" layoutX="194.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <Font size="20.0" />
+            </font></Button>
+         <ImageView fitHeight="194.0" fitWidth="499.0" layoutX="106.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@MiniBytesLogo.png" />
+               <Image url="@Logo.png" />
             </image>
          </ImageView>
-         <Button fx:id="loginButton" layoutX="275.0" layoutY="343.0" mnemonicParsing="false" onMouseClicked="#onLoginButtonClick" prefHeight="31.0" prefWidth="163.0" text="Signup" />
+         <Button fx:id="signupButton" layoutX="254.0" layoutY="370.0" mnemonicParsing="false" onMouseClicked="#onSignupButtonClicked" prefHeight="39.0" prefWidth="202.0" style="-fx-background-color: #F4F6F7#F4F6F7; -fx-text-fill: #34495E#34495E #34495E#34495E #34495E#34495E #34495E#34495E;" text="Signup">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+         <Label layoutX="349.0" layoutY="343.0" style="-fx-text-fill: #34495E#34495E #34495E#34495E;" text="or" />
       </children>
    </Pane>
 </VBox>

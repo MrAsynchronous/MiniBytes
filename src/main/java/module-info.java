@@ -13,7 +13,11 @@ module com.minibytes.minibytes {
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.core;
     requires guava;
+    requires java.desktop;
 
     opens com.minibytes.main to javafx.fxml;
+    opens com.minibytes.main.controllers to javafx.fxml;
+
     exports com.minibytes.main;
+    exports com.minibytes.main.controllers;
 }
