@@ -3,7 +3,6 @@ module com.minibytes.minibytes {
     requires javafx.fxml;
     requires javafx.web;
 
-    requires com.jfoenix;
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires validatorfx;
@@ -16,5 +15,8 @@ module com.minibytes.minibytes {
     requires guava;
 
     opens com.minibytes.main to javafx.fxml;
+    opens com.minibytes.main.controllers to javafx.fxml;
+
     exports com.minibytes.main;
+    exports com.minibytes.main.controllers;
 }

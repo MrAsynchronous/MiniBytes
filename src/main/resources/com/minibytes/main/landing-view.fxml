@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" maxHeight="500.0" maxWidth="750.0" minHeight="500.0" minWidth="750.0" prefHeight="500.0" prefWidth="500.0" spacing="20.0" style="-fx-background-color: #82E0AA#82E0AA;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.minibytes.main.controllers.LandingView">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <Pane prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #82E0AA#82E0AA;">
+      <children>
+         <Button fx:id="loginButton" layoutX="254.0" layoutY="270.0" mnemonicParsing="false" onMouseClicked="#onLoginButtonClicked" prefHeight="39.0" prefWidth="202.0" style="-fx-background-color: #F4F6F7#F4F6F7; -fx-text-fill: #34495E#34495E #34495E#34495E #34495E#34495E #34495E#34495E;" text="Login">
+            <font>
+               <Font size="20.0" />
+            </font></Button>
+         <ImageView fitHeight="194.0" fitWidth="499.0" layoutX="106.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@Logo.png" />
+            </image>
+         </ImageView>
+         <Button layoutX="254.0" layoutY="217.0" mnemonicParsing="false" onMouseClicked="#onSignupButtonClicked" prefHeight="39.0" prefWidth="202.0" style="-fx-background-color: #F4F6F7#F4F6F7; -fx-text-fill: #34495E#34495E #34495E#34495E #34495E#34495E #34495E#34495E;" text="Signup">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Button>
+      </children>
+   </Pane>
+</VBox>

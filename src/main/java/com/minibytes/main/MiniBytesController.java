@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class HelloController {
+public class MiniBytesController {
     CloudService cloud;
     private final String URL = "http://35.192.3.43:8080";
     private final String DEV_URL = "http://localhost:8080";
@@ -27,7 +27,7 @@ public class HelloController {
     @FXML
     private ListView bytelist;
 
-    public HelloController() {
+    public MiniBytesController() {
         this.cloud = new CloudService(DEV_URL);
     }
 
