@@ -1,10 +1,14 @@
+/*
+    Brandon Wilcox
+    Nov 20 2021
+ */
+
 package com.minibytes.main.cloud;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.*;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 

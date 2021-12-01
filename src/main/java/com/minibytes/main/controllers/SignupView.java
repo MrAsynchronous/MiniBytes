@@ -1,3 +1,8 @@
+/*
+    Brandon Wilcox
+    Dec 1 2021
+ */
+
 package com.minibytes.main.controllers;
 
 import com.google.common.hash.Hashing;

@@ -1,15 +1,18 @@
+/*
+    Brandon Wilcox
+    Dec 1 2021
+ */
+
 package com.minibytes.main.controllers;
 
 import com.google.common.hash.Hashing;
 import com.minibytes.main.cloud.CloudService;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 

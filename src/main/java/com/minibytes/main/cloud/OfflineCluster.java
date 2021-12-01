@@ -1,8 +1,10 @@
+/*
+    Brandon Wilcox
+    Nov 20 2021
+ */
+
 package com.minibytes.main.cloud;
 
-import com.fasterxml.jackson.core.JsonParser;
-
-import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
