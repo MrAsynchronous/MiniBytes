@@ -1,6 +1,7 @@
 package com.minibytes.main;
 
 import com.minibytes.main.cloud.CloudService;
+import com.minibytes.main.components.ByteObject;
 import com.minibytes.main.controllers.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MiniBytesApplication extends Application {
@@ -55,6 +57,7 @@ public class MiniBytesApplication extends Application {
 
         // Setup dependencies
         BaseView.setup(config);
+        ByteObject.cloud = cloud;
 
         // Set names
         landingView.setName("Landing");
