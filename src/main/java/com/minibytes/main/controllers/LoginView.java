@@ -13,7 +13,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LoginView extends BaseView {
@@ -69,7 +71,7 @@ public class LoginView extends BaseView {
         );
 
         MainView view = (MainView) MiniBytesApplication.sceneObjects.get("Main");
-        view.setupLabels(thisUser);
+        view.initialize(thisUser);
 
         stage.setScene(
               getScene("Main")
