@@ -16,13 +16,7 @@ import javafx.stage.Stage;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
-public class SignupView {
-    private static CloudService cloud;
-    private static Stage stage;
-
-    private static Scene signupView;
-    private static Scene loginView;
-
+public class SignupView extends BaseView {
     @FXML
     private TextField bioBox;
 
@@ -32,23 +26,13 @@ public class SignupView {
     @FXML
     private PasswordField passwordBox;
 
-    public SignupView() {
-
-    }
-
-    public SignupView(Stage stage, HashMap views, CloudService cloud) {
-        this.cloud = cloud;
-        this.stage = stage;
-
-        this.signupView = (Scene) views.get("Signup");
-        this.loginView = (Scene) views.get("Login");
-    }
-
-    public Scene getScene() { return signupView; }
+    public SignupView() { super(); }
 
     @FXML
     protected void onLoginButtonClicked() {
-        stage.setScene(loginView);
+        stage.setScene(
+                getScene("Login")
+        );
     }
 
     @FXML

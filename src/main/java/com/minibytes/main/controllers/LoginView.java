@@ -6,42 +6,27 @@
 package com.minibytes.main.controllers;
 
 import com.google.common.hash.Hashing;
-import com.minibytes.main.cloud.CloudService;
+
+import com.minibytes.main.MiniBytesApplication;
+import com.minibytes.main.components.User;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
-public class LoginView {
-    private static CloudService cloud;
-    private static Stage stage;
-
-    private static Scene signupView;
-    private static Scene loginView;
-
+public class LoginView extends BaseView {
     @FXML
     private TextField usernameBox;
 
     @FXML
     private PasswordField passwordBox;
 
-    public LoginView() {
-
-    }
-
-    public LoginView(Stage stage, HashMap views, CloudService cloud) {
-        this.cloud = cloud;
-        this.stage = stage;
-
-        this.signupView = (Scene) views.get("Signup");
-        this.loginView = (Scene) views.get("Login");
-    }
-
-    public Scene getScene() { return loginView; }
+    /*
+        Completely useless constructor used for JavaFx to do its thing
+     */
+    public LoginView() { super(); }
 
     @FXML
     protected void onLoginButtonClicked() {
@@ -50,17 +35,51 @@ public class LoginView {
                 .hashString(passwordBox.getText(), StandardCharsets.UTF_8)
                 .toString();
 
-        System.out.println(String.format("Attempting login to user: %s", username));
-
-        // Attempt login
+        // Attempt to login
         HashMap response = cloud.Login(username, password);
 
-        System.out.println(response);
+        // Handle error case TODO: MAKE THIS A DIALOG
+        if (response.get("message") != null) {
+            System.out.println("Something went wrong!");
+
+            return;
+        }
+
+        // Attempt to fetch userId
+        String userId = (String) response.get("user_id");
+        HashMap userData = cloud.GetUserInfo(userId);
+
+        // Handle error case TODO: MAKE THIS A DIALOG
+        if (userData.get("message") != null) {
+            System.out.println(userData.get("message"));
+
+            return;
+        }
+
+        // Get user info
+        HashMap userInfo = (HashMap) userData.get("user_info");
+
+        // Construct a new user
+        User thisUser = new User(
+                username,
+                (String) response.get("user_id"),
+                (String) userInfo.get("bio"),
+                (int) userInfo.get("total_upvotes"),
+                (int) userInfo.get("total_bytes")
+        );
+
+        MainView view = (MainView) MiniBytesApplication.sceneObjects.get("Main");
+        view.setupLabels(thisUser);
+
+        stage.setScene(
+              getScene("Main")
+        );
     }
 
     @FXML
     protected void onSignupButtonClicked() {
-        stage.setScene(signupView);
+        stage.setScene(
+                getScene("Signup")
+        );
     }
-
 }
