@@ -38,6 +38,7 @@ public class CloudService extends Network {
         Map<String, String> elements = new HashMap();
         elements.put("name", username);
         elements.put("password", password);
+        elements.put("bio", bio);
 
         RequestBody body = RequestBody.create(toJSON(elements), JSON);
 

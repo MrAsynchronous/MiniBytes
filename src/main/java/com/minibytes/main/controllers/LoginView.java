@@ -74,7 +74,7 @@ public class LoginView extends BaseView {
         view.initialize(thisUser);
 
         stage.setScene(
-              getScene("Main")
+                getScene("Main")
         );
     }
 

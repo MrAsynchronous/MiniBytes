@@ -21,10 +21,8 @@ import java.util.HashMap;
 public class MainView extends BaseView{
     public HashMap<String, ByteObject> displayedBytes = new HashMap<>();
     public ArrayList bytes = new ArrayList();
+    public static boolean initialized = false;
     private User user;
-
-    private final int byteSizeX = 304;
-    private final int byteSizeY = 128;
 
     @FXML
     private Label accountNameLabel;
@@ -50,7 +48,7 @@ public class MainView extends BaseView{
     public MainView() { super(); }
 
     @FXML
-    public void initialize(User user) {
+    public synchronized void initialize(User user) {
         this.user = user;
 
         // Setup labels
@@ -70,15 +68,27 @@ public class MainView extends BaseView{
             }
 
             HashMap response = cloud.PostByte(user.getUserId(), body);
+            if (response.get("message") != null) {
+                System.out.println(response.get("message"));
+
+                return;
+            }
 
             update();
         });
 
-        // Begin updating everything on a loop
-        update();
+        initialized = true;
     }
 
-    public void update() {
+    public synchronized void update() {
+        HashMap response = cloud.GetUserInfo(user.getUserId());
+        if (response.get("message") != null) {
+            return;
+        }
+
+        HashMap userInfo = (HashMap) response.get("user_info");
+        user.updateInfo(userInfo);
+
         updateStatLabels();
         refreshByteList();
     }
@@ -111,15 +121,17 @@ public class MainView extends BaseView{
             HashMap byteInfo = (HashMap) bytes.get(i);
             String byteId = (String) byteInfo.get("_id");
 
-            if (displayedBytes.get(byteId) == null) {
+            ByteObject existingByte = displayedBytes.get(byteId);
+
+            if (existingByte == null) {
                 newBytes.add(byteInfo);
+            } else {
+                existingByte.updateUpvotes(byteInfo);
             }
         }
 
         // Check for no new bytes!
         if (newBytes.size() == 0) {
-            System.out.println("No new bytes!");
-
             return;
         }
 

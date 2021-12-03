@@ -43,8 +43,9 @@ public class User {
         return totalBytes;
     }
 
-    public HashMap getUsers() {
-        return users;
+    public void updateInfo(HashMap userInfo) {
+        this.totalUpvotes = (int) userInfo.get("total_upvotes");
+        this.totalBytes = (int) userInfo.get("total_bytes");
     }
 
     @Override

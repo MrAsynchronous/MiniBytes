@@ -3,6 +3,7 @@ package com.minibytes.main;
 import com.minibytes.main.cloud.CloudService;
 import com.minibytes.main.components.ByteObject;
 import com.minibytes.main.controllers.*;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class MiniBytesApplication extends Application {
@@ -71,6 +73,23 @@ public class MiniBytesApplication extends Application {
         stage.setTitle("MiniBytes");
         stage.setResizable(false);
         stage.show();
+
+        AnimationTimer timer = new AnimationTimer() {
+            int lastUpdate = 0;
+
+            @Override
+            public void handle(long frameRate) {
+                int now = (int) System.currentTimeMillis() / 1000;
+                if ((now - lastUpdate) < 2 || !mainView.initialized) {
+                    return;
+                }
+
+                lastUpdate = now;
+                mainView.update();
+            }
+        };
+
+        timer.start();
     }
 
     public static void main(String[] args) {

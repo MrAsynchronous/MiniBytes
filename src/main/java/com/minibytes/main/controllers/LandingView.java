@@ -6,7 +6,6 @@
 package com.minibytes.main.controllers;
 
 import javafx.fxml.FXML;
-import java.util.HashMap;
 
 public class LandingView extends BaseView {
     public LandingView() {
