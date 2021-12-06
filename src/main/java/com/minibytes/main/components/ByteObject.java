@@ -5,8 +5,10 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import org.ocpsoft.prettytime.PrettyTime;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class ByteObject {
@@ -15,7 +17,9 @@ public class ByteObject {
     private final String authorId;
     private final String byteId;
     private final String body;
-    private final String date;
+    private final long date;
+
+    private final PrettyTime prettyTime;
 
     private final HashMap userInfo;
     private final String authorName;
@@ -32,13 +36,14 @@ public class ByteObject {
 
     public ByteObject(HashMap byteInfo) {
         HashMap voteInfo = (HashMap) byteInfo.get("votes");
+        this.prettyTime = new PrettyTime();
 
         this.authorId = (String) byteInfo.get("author_userid");
         this.usersUpvoted = (ArrayList) voteInfo.get("users");
         this.upvoteCount = (int) voteInfo.get("count");
         this.byteId = (String) byteInfo.get("_id");
         this.body = (String) byteInfo.get("body");
-        this.date = (String) byteInfo.get("date");
+        this.date = (long) byteInfo.get("date");
         this.userInfo = (HashMap) byteInfo.get("author_userdata");;
         this.authorName = (String) userInfo.get("name");
 
@@ -78,7 +83,6 @@ public class ByteObject {
         bodyLabel.setStyle("-fx-text-fill: #34495E");
 
         timeLabel = new Label();
-        timeLabel.setText(date);
         timeLabel.setMinSize(101, 20);
         timeLabel.setPrefSize(101, 20);
         timeLabel.setAlignment(Pos.BOTTOM_LEFT);
@@ -102,6 +106,11 @@ public class ByteObject {
         container.getChildren().add(upvoteButton);
 
         updateUpvotes(upvoteCount);
+        updateDate();
+    }
+
+    public void updateDate() {
+        timeLabel.setText(prettyTime.format(new Date(date)));
     }
 
     public void updateUpvotes(int count) {
@@ -129,7 +138,7 @@ public class ByteObject {
         return body;
     }
 
-    public String getDate() {
+    public long getDate() {
         return date;
     }
 

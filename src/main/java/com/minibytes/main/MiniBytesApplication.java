@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class MiniBytesApplication extends Application {
-    private final String URL = "http://35.192.3.43:8080";
+    private final String URL = "http://34.68.182.15:8080";
     private final String DEV_URL = "http://localhost:8080";
 
     public static HashMap sceneObjects = new HashMap();

@@ -127,6 +127,7 @@ public class MainView extends BaseView{
                 newBytes.add(byteInfo);
             } else {
                 existingByte.updateUpvotes(byteInfo);
+                existingByte.updateDate();
             }
         }
 
