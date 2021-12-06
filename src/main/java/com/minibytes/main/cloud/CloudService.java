@@ -15,8 +15,8 @@ import java.util.Map;
 public class CloudService extends Network {
     private static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
-    public CloudService(String url) {
-        super(url);
+    public CloudService(boolean isProduction, String url) {
+        super(isProduction, url);
     }
 
     /*

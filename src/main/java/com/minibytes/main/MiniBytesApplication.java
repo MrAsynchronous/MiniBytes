@@ -14,7 +14,12 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class MiniBytesApplication extends Application {
-    private final String URL = "http://34.68.182.15:8080";
+    private final boolean IS_PRODUCTION = true;
+
+    // do not touch anything below this line
+    //____________________________________________________________________
+
+    private final String PROD_URL = "http://34.135.244.23:8080";
     private final String DEV_URL = "http://localhost:8080";
 
     public static HashMap sceneObjects = new HashMap();
@@ -24,7 +29,7 @@ public class MiniBytesApplication extends Application {
         HashMap config = new HashMap();
         HashMap scenes = new HashMap();
 
-        CloudService cloud = new CloudService(DEV_URL);
+        CloudService cloud = new CloudService(IS_PRODUCTION, IS_PRODUCTION ? PROD_URL : DEV_URL);
         config.put("Cloud", cloud);
         config.put("Stage", stage);
 

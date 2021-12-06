@@ -15,6 +15,7 @@ import java.util.Map;
 public class Network {
     private static final ObjectMapper mapper = new ObjectMapper();
     private final OkHttpClient CLIENT = new OkHttpClient();
+    private boolean IS_PRODUCTION;
     public final String BASE_URL;
     public boolean IsOnline;
     public OfflineCluster offlineCluster;
@@ -24,8 +25,9 @@ public class Network {
 
         Makes GET request to URL to test connection
      */
-    public Network(String url) {
+    public Network(boolean isProduction, String url) {
         this.BASE_URL = url;
+        this.IS_PRODUCTION = isProduction;
 
         // Create get request to server
         Request request = new Request.Builder()
@@ -36,7 +38,7 @@ public class Network {
         try (Response response = CLIENT.newCall(request).execute()) {
             this.IsOnline = true;
 
-            System.out.println("Connected to MiniBytes Cloud!");
+            System.out.println(String.format("Connected to %s cluster!", isProduction ? "production" : "development"));
         } catch (Exception e) {
             this.IsOnline = false;
             this.offlineCluster = new OfflineCluster();
