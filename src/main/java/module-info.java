@@ -3,6 +3,7 @@ module com.minibytes.minibytes {
     requires javafx.fxml;
     requires javafx.web;
 
+    requires prettytime;
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires validatorfx;

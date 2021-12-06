@@ -1,44 +1,34 @@
+/*
+    Brandon Wilcox
+    Dec 1 2021
+ */
+
 package com.minibytes.main.controllers;
 
 import com.google.common.hash.Hashing;
-import com.minibytes.main.cloud.CloudService;
+
+import com.minibytes.main.MiniBytesApplication;
+import com.minibytes.main.components.User;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class LoginView {
-    private static CloudService cloud;
-    private static Stage stage;
-
-    private static Scene signupView;
-    private static Scene loginView;
-
+public class LoginView extends BaseView {
     @FXML
     private TextField usernameBox;
 
     @FXML
     private PasswordField passwordBox;
 
-    public LoginView() {
-
-    }
-
-    public LoginView(Stage stage, HashMap views, CloudService cloud) {
-        this.cloud = cloud;
-        this.stage = stage;
-
-        this.signupView = (Scene) views.get("Signup");
-        this.loginView = (Scene) views.get("Login");
-    }
-
-    public Scene getScene() { return loginView; }
+    /*
+        Completely useless constructor used for JavaFx to do its thing
+     */
+    public LoginView() { super(); }
 
     @FXML
     protected void onLoginButtonClicked() {
@@ -47,17 +37,18 @@ public class LoginView {
                 .hashString(passwordBox.getText(), StandardCharsets.UTF_8)
                 .toString();
 
-        System.out.println(String.format("Attempting login to user: %s", username));
+        // Attempt to login
+        handleUserSignin(cloud.Login(username, password));
 
-        // Attempt login
-        HashMap response = cloud.Login(username, password);
-
-        System.out.println(response);
+        stage.setScene(
+                getScene("Main")
+        );
     }
 
     @FXML
     protected void onSignupButtonClicked() {
-        stage.setScene(signupView);
+        stage.setScene(
+                getScene("Signup")
+        );
     }
-
 }

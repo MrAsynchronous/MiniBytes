@@ -34,6 +34,11 @@
             </font>
          </Button>
          <Label layoutX="349.0" layoutY="343.0" style="-fx-text-fill: #34495E#34495E #34495E#34495E;" text="or" />
+         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="222.0" layoutY="129.0" text="A fake but functional social media platform">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Label>
       </children>
    </Pane>
 </VBox>

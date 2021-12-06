@@ -1,3 +1,8 @@
+/*
+    Brandon Wilcox
+    Nov 20 2021
+ */
+
 package com.minibytes.main.cloud;
 
 import okhttp3.MediaType;
@@ -10,8 +15,8 @@ import java.util.Map;
 public class CloudService extends Network {
     private static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
-    public CloudService(String url) {
-        super(url);
+    public CloudService(boolean isProduction, String url) {
+        super(isProduction, url);
     }
 
     /*
@@ -33,6 +38,7 @@ public class CloudService extends Network {
         Map<String, String> elements = new HashMap();
         elements.put("name", username);
         elements.put("password", password);
+        elements.put("bio", bio);
 
         RequestBody body = RequestBody.create(toJSON(elements), JSON);
 
