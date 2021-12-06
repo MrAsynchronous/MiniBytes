@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="MiniBytes:jar">
+  <artifact type="jar" build-on-make="true" name="MiniBytes:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/MiniBytes_jar</output-path>
     <root id="archive" name="MiniBytes.jar">
       <element id="directory" name="META-INF">
