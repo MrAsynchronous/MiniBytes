@@ -39,15 +39,7 @@ public class ByteObject {
         this.byteId = (String) byteInfo.get("_id");
         this.body = (String) byteInfo.get("body");
         this.date = (String) byteInfo.get("date");
-
-        // Fetch user info
-        HashMap response = cloud.GetUserInfo(authorId);
-        if (response.get("message") != null) {
-            System.out.println(byteInfo);
-        }
-
-        // Cache userinfo
-        this.userInfo = (HashMap) response.get("user_info");
+        this.userInfo = (HashMap) byteInfo.get("author_userdata");;
         this.authorName = (String) userInfo.get("name");
 
         // Create container

@@ -80,7 +80,10 @@ public class MainView extends BaseView{
         initialized = true;
     }
 
-    public synchronized void update() {
+    public void update() {
+        updateStatLabels();
+        refreshByteList();
+
         HashMap response = cloud.GetUserInfo(user.getUserId());
         if (response.get("message") != null) {
             return;
@@ -88,9 +91,6 @@ public class MainView extends BaseView{
 
         HashMap userInfo = (HashMap) response.get("user_info");
         user.updateInfo(userInfo);
-
-        updateStatLabels();
-        refreshByteList();
     }
 
     public void updateStatLabels() {

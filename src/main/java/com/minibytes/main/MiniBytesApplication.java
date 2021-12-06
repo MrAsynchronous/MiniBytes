@@ -79,8 +79,8 @@ public class MiniBytesApplication extends Application {
 
             @Override
             public void handle(long frameRate) {
-                int now = (int) System.currentTimeMillis() / 1000;
-                if ((now - lastUpdate) < 2 || !mainView.initialized) {
+                int now = Math.abs(((int) System.currentTimeMillis()) / 1000);
+                if (Math.abs(now - lastUpdate) < 2 || !mainView.initialized) {
                     return;
                 }
 
