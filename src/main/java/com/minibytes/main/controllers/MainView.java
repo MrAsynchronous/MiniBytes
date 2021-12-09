@@ -9,6 +9,7 @@ import com.minibytes.main.components.ByteObject;
 import com.minibytes.main.components.User;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -62,14 +63,24 @@ public class MainView extends BaseView{
         postByteButton.setOnAction(event -> {
             String body = byteBody.getText();
             if (body.length() > 128 || body.trim().equals("")) {
-                System.out.println("Error!");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Something went wrong!");
+                alert.setHeaderText(null);
+                alert.setContentText("You're Byte content is too long!");
+
+                alert.showAndWait();
 
                 return;
             }
 
             HashMap response = cloud.PostByte(user.getUserId(), body);
             if (response.get("message") != null) {
-                System.out.println(response.get("message"));
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Something went wrong!");
+                alert.setHeaderText(null);
+                alert.setContentText((String) response.get("message"));
+
+                alert.showAndWait();
 
                 return;
             }
