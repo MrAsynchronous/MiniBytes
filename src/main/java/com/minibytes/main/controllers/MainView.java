@@ -19,9 +19,11 @@ import javafx.scene.layout.RowConstraints;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/*
+    MainView handles the rendering of bytes and posting bytes
+ */
 public class MainView extends BaseView{
     public HashMap<String, ByteObject> displayedBytes = new HashMap<>();
-    public ArrayList bytes = new ArrayList();
     public static boolean initialized = false;
     private User user;
 
@@ -48,6 +50,9 @@ public class MainView extends BaseView{
 
     public MainView() { super(); }
 
+    /*
+        Initializes everything
+     */
     @FXML
     public synchronized void initialize(User user) {
         this.user = user;
@@ -62,6 +67,8 @@ public class MainView extends BaseView{
         // Setup post byte
         postByteButton.setOnAction(event -> {
             String body = byteBody.getText();
+
+            // Check body
             if (body.length() > 128 || body.trim().equals("")) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Something went wrong!");
@@ -73,7 +80,10 @@ public class MainView extends BaseView{
                 return;
             }
 
+            // Attempt to post byte
             HashMap response = cloud.PostByte(user.getUserId(), body);
+
+            // Handle error case
             if (response.get("message") != null) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Something went wrong!");
@@ -91,6 +101,9 @@ public class MainView extends BaseView{
         initialized = true;
     }
 
+    /*
+        Updates the stat labels, byte feed and user info
+     */
     public void update() {
         updateStatLabels();
         refreshByteList();
@@ -104,6 +117,9 @@ public class MainView extends BaseView{
         user.updateInfo(userInfo);
     }
 
+    /*
+        Updates the stat labels
+     */
     public void updateStatLabels() {
         totalBytesLabel.setText(
                 String.format("Total Bytes: %d", user.getTotalBytes())
@@ -114,6 +130,9 @@ public class MainView extends BaseView{
         );
     }
 
+    /*
+        Adds rows to the GridPane
+     */
     private void insertRows(int count) {
         for (Node child : byteView.getChildren()) {
             Integer rowIndex = GridPane.getRowIndex(child);
@@ -121,6 +140,9 @@ public class MainView extends BaseView{
         }
     }
 
+    /*
+        Refreshes the ByteList
+     */
     public void refreshByteList() {
         HashMap result = cloud.GetByteFeed();
         ArrayList bytes = (ArrayList) result.get("bytes");

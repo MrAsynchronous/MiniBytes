@@ -13,6 +13,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.HashMap;
 
+/*
+    Main initialization for MiniBytes app
+ */
 public class MiniBytesApplication extends Application {
     private final boolean IS_PRODUCTION = true;
 
@@ -24,11 +27,15 @@ public class MiniBytesApplication extends Application {
 
     public static HashMap sceneObjects = new HashMap();
 
+    /*
+        Starts the application.  Creates FXML loaders and views
+     */
     @Override
     public void start(Stage stage) throws IOException {
         HashMap config = new HashMap();
         HashMap scenes = new HashMap();
 
+        // Create CloudService with proper URL
         CloudService cloud = new CloudService(IS_PRODUCTION, IS_PRODUCTION ? PROD_URL : DEV_URL);
         config.put("Cloud", cloud);
         config.put("Stage", stage);
@@ -77,6 +84,7 @@ public class MiniBytesApplication extends Application {
         stage.setResizable(false);
         stage.show();
 
+        // Create an animation timer to update the MainView every 2 seconds
         AnimationTimer timer = new AnimationTimer() {
             int lastUpdate = 0;
 
