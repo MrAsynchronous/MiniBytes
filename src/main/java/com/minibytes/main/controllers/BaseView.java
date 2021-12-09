@@ -4,6 +4,7 @@ import com.minibytes.main.MiniBytesApplication;
 import com.minibytes.main.cloud.CloudService;
 import com.minibytes.main.components.User;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
@@ -35,12 +36,17 @@ public class BaseView {
         return (Scene) scenes.get(sceneName);
     }
 
-    public void handleUserSignin(HashMap signinResponse) {
+    public boolean handleUserSignin(HashMap signinResponse) {
         // Handle error case TODO: MAKE THIS A DIALOG
         if (signinResponse.get("message") != null) {
-            System.out.println("Something went wrong!");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Something went wrong!");
+            alert.setHeaderText(null);
+            alert.setContentText((String) signinResponse.get("message"));
 
-            return;
+            alert.showAndWait();
+
+            return false;
         }
 
         // Attempt to fetch userId
@@ -49,9 +55,14 @@ public class BaseView {
 
         // Handle error case TODO: MAKE THIS A DIALOG
         if (userData.get("message") != null) {
-            System.out.println(userData.get("message"));
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Something went wrong!");
+            alert.setHeaderText(null);
+            alert.setContentText((String) signinResponse.get("message"));
 
-            return;
+            alert.showAndWait();
+
+            return false;
         }
 
         // Get user info
@@ -68,5 +79,7 @@ public class BaseView {
 
         MainView view = (MainView) MiniBytesApplication.sceneObjects.get("Main");
         view.initialize(thisUser);
+
+        return true;
     }
 }

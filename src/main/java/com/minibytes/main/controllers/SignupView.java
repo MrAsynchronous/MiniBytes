@@ -6,17 +6,10 @@
 package com.minibytes.main.controllers;
 
 import com.google.common.hash.Hashing;
-import com.minibytes.main.MiniBytesApplication;
-import com.minibytes.main.cloud.CloudService;
-import com.minibytes.main.components.User;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 
 public class SignupView extends BaseView {
     @FXML
@@ -46,11 +39,13 @@ public class SignupView extends BaseView {
         String bio = bioBox.getText();
 
         // Attempt login
-        handleUserSignin(cloud.Signup(username, password, bio));
+        boolean succcess = handleUserSignin(cloud.Signup(username, password, bio));
 
-        stage.setScene(
-                getScene("Main")
-        );
+        if (succcess) {
+            stage.setScene(
+                    getScene("Main")
+            );
+        }
     }
 
 }

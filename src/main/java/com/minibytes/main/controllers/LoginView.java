@@ -6,17 +6,10 @@
 package com.minibytes.main.controllers;
 
 import com.google.common.hash.Hashing;
-
-import com.minibytes.main.MiniBytesApplication;
-import com.minibytes.main.components.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
-import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class LoginView extends BaseView {
     @FXML
@@ -38,11 +31,13 @@ public class LoginView extends BaseView {
                 .toString();
 
         // Attempt to login
-        handleUserSignin(cloud.Login(username, password));
+        boolean success = handleUserSignin(cloud.Login(username, password));
 
-        stage.setScene(
-                getScene("Main")
-        );
+        if (success) {
+            stage.setScene(
+                    getScene("Main")
+            );
+        }
     }
 
     @FXML
