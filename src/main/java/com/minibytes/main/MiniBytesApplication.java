@@ -22,7 +22,7 @@ public class MiniBytesApplication extends Application {
     // do not touch anything below this line
     //____________________________________________________________________
 
-    private final String PROD_URL = "http://34.135.244.23:8080";
+    private final String PROD_URL = "http://34.135.244.23:8080"; //no ddos plz
     private final String DEV_URL = "http://localhost:8080";
 
     public static HashMap sceneObjects = new HashMap();
