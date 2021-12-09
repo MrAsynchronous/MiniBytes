@@ -23,8 +23,12 @@ public class LoginView extends BaseView {
      */
     public LoginView() { super(); }
 
+    /*
+        Attempt login if button is clicked
+     */
     @FXML
     protected void onLoginButtonClicked() {
+        // Get username, hash password
         String username = usernameBox.getText();
         String password = Hashing.sha256()
                 .hashString(passwordBox.getText(), StandardCharsets.UTF_8)
@@ -33,6 +37,7 @@ public class LoginView extends BaseView {
         // Attempt to login
         boolean success = handleUserSignin(cloud.Login(username, password));
 
+        // If login was a success, then change scene
         if (success) {
             stage.setScene(
                     getScene("Main")
@@ -40,6 +45,9 @@ public class LoginView extends BaseView {
         }
     }
 
+    /*
+       Change scene if signup button clicked
+     */
     @FXML
     protected void onSignupButtonClicked() {
         stage.setScene(

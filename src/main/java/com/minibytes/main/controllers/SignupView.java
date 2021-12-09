@@ -11,6 +11,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import java.nio.charset.StandardCharsets;
 
+/*
+    Handles the buttons and labels for the SignupView
+ */
 public class SignupView extends BaseView {
     @FXML
     private TextField bioBox;
@@ -23,6 +26,9 @@ public class SignupView extends BaseView {
 
     public SignupView() { super(); }
 
+    /*
+        Change scene when loginbutton is clicked
+     */
     @FXML
     protected void onLoginButtonClicked() {
         stage.setScene(
@@ -30,8 +36,12 @@ public class SignupView extends BaseView {
         );
     }
 
+    /*
+        Change scene when signupbutton is clicked
+     */
     @FXML
     protected void onSignupButtonClicked() {
+        // Fetch username and password, hash password
         String username = usernameBox.getText();
         String password = Hashing.sha256()
                 .hashString(passwordBox.getText(), StandardCharsets.UTF_8)
@@ -41,6 +51,7 @@ public class SignupView extends BaseView {
         // Attempt login
         boolean succcess = handleUserSignin(cloud.Signup(username, password, bio));
 
+        // If login was a success, change scene
         if (succcess) {
             stage.setScene(
                     getScene("Main")
